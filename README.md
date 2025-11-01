@@ -2,9 +2,9 @@
 
 Bu proje, Amezay tarafından verilen "Frontend Edge Challenge" için geliştirilmiş bir AMEZ token dashboard uygulamasıdır. Uygulama, React, TypeScript, Vite, wagmi ve Tailwind CSS kullanılarak oluşturulmuş ve Cloudflare Pages/Functions üzerinde çalışacak şekilde tasarlanmıştır.
 
-![Dashboard Screenshot](...) 
 
-## ✨ Özellikler
+
+## Özellikler
 
 - **Token Bilgileri:** AMEZ token sembolü, toplam arz ve Cloudflare Worker üzerinden cache'lenerek sunulan anlık fiyat bilgisi.
 - **Cüzdan Entegrasyonu:** MetaMask ve WalletConnect ile cüzdan bağlama ve kullanıcının AMEZ token bakiyesini gösterme.
@@ -15,7 +15,7 @@ Bu proje, Amezay tarafından verilen "Frontend Edge Challenge" için geliştiril
   - **Güvenlik:** IP tabanlı rate limiting (10 istek/saniye).
   - **Performans:** Otomatik gzip/brotli sıkıştırması ve uygun `Cache-Control` başlıkları.
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 - **Frontend:** React, TypeScript, Vite, Tailwind CSS
 - **Web3:** wagmi, viem, Web3Modal
@@ -25,7 +25,7 @@ Bu proje, Amezay tarafından verilen "Frontend Edge Challenge" için geliştiril
 
 ---
 
-## 🚀 Kurulum ve Çalıştırma
+## Kurulum ve Çalıştırma
 
 Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 
