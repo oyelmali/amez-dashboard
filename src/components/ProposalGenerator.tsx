@@ -1,5 +1,3 @@
-// src/components/ProposalGenerator.tsx
-
 import { useState } from 'react';
 import { encodeFunctionData, isAddress } from 'viem';
 import { addDays, getUnixTime } from 'date-fns';
