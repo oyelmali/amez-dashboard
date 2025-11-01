@@ -3,6 +3,7 @@ import { ProposalGenerator } from './components/ProposalGenerator';
 import { TokenInfoCard } from './components/TokenInfoCard';
 import { TransferList } from './components/TransferList';
 import { UserBalance } from './components/UserBalance';
+import { PriceChart } from './components/PriceChart';
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <TokenInfoCard />
           <UserBalance />
+        </div>
+
+        <div className="mb-8">
+          <PriceChart />
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
