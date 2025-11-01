@@ -1,16 +1,17 @@
-import { createWeb3Modal } from '@web3modal/wagmi/react'
-import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
+import { createAppKit } from '@reown/appkit/react'
+
 import { WagmiProvider } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
+import { arbitrum, mainnet } from '@reown/appkit/networks'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 
+// 0. Setup queryClient
+const queryClient = new QueryClient()
 
-const queryClient = new QueryClient();
-
-// 1. WalletConnect Project ID
+// 1. Get projectId from https://dashboard.reown.com
 const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID;
 
-// 2. Projenin metadata'sı (cüzdan bağlantı ekranında görünecek bilgiler).
+// 2. Create a metadata object - optional
 const metadata = {
   name: 'AMEZ Dashboard',
   description: 'Amezay Frontend Challenge için AMEZ Token Paneli',
@@ -18,34 +19,34 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886'] // Proje logosu
 }
 
-// 3. Destekleyeceğimiz blockchain ağlarını tanımlıyoruz.
-const chains = [mainnet, sepolia] as const; // `mainnet` production, `sepolia` test için.
+// 3. Set the networks
+const networks = [mainnet, arbitrum]
 
-// 4. Wagmi'nin ana yapılandırma objesini oluşturuyoruz.
-// Bu obje, hangi ağları, proje ID'sini ve metadata'yı kullanacağımızı belirtir.
-export const config = defaultWagmiConfig({
-  chains,
+
+// 4. Create Wagmi Adapter
+const wagmiAdapter = new WagmiAdapter({
+  networks,
+  projectId,
+  ssr: true
+})
+
+// 5. Create modal
+createAppKit({
+  adapters: [wagmiAdapter],
+  networks: [mainnet, arbitrum],
   projectId,
   metadata,
-});
-
-// 5. Web3Modal
-createWeb3Modal({
-  wagmiConfig: config,
-  projectId,
-
+  themeMode: 'light',
   themeVariables: {
-    
-    '--w3m-accent': '#54217eff', // İndigo'dan Violet'e gradyan
-
+    '--w3m-color-mix': '#DD7BDF',
+    '--w3m-qr-color': '#DD7BDF'
   }
 });
 
 // 6. Web3Provider component'ini GÜNCELLİYORUZ
 export function Web3Provider({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiProvider config={config}>
-      {/* Uygulamayı QueryClientProvider ile sarmalıyoruz */}
+    <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         {children}
       </QueryClientProvider>

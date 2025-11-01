@@ -5,7 +5,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["vite/client", "@cloudflare/workers-types"],
+    "types": ["vite/client"],
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -17,9 +17,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "files": [
+    "vite-env.d.ts" /* Tip tanımını zorla dahil et */
+  ],
   "include": [
     "src", 
-    "functions", 
-    "vite-env.d.ts" /* Ana dizindeki dosyayı dahil et */
+    "src/components/custom.d.ts"
+  ],
+  "exclude": [
+    "functions" /* Worker kodunu bu yapılandırmanın dışında tut */
   ]
 }

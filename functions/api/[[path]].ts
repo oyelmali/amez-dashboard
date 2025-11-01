@@ -1,3 +1,4 @@
+/// <reference types="@cloudflare/workers-types" />
 /**
  * Cloudflare Pages Function (Worker) için ortam tiplerini tanımlar.
  * Bu, context.env, context.request gibi objelerin tiplerini bilmemizi sağlar.
