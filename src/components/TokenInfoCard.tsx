@@ -1,10 +1,21 @@
 import { useState, useEffect } from 'react';
 import { CubeTransparentIcon, CreditCardIcon, CircleStackIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
 
+
+type CoinGeckoResponse = {
+  ethereum: {
+    usd: number;
+  };
+};
+
 export function TokenInfoCard() {
   const [price, setPrice] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+
+  
+
 
   useEffect(() => {
     const fetchTokenPrice = async () => {
@@ -15,7 +26,10 @@ export function TokenInfoCard() {
         if (!response.ok) {
           throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
-        const data = await response.json();
+        
+        // Gelen veriyi tanımladığımız tipe atıyoruz
+        const data = await response.json() as CoinGeckoResponse;
+
         const fetchedPrice = data?.ethereum?.usd;
         if (typeof fetchedPrice === 'number') {
           setPrice(fetchedPrice);
