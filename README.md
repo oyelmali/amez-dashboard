@@ -1,8 +1,13 @@
 # AMEZ Token Dashboard - Frontend Edge Challenge
 
+**🚀 Canlı Demo:** [**PROJENİN_CANLI_URLSİ**](https://b9de4c8e.amez-dashboard.pages.dev)
+*(Not: Lütfen MetaMask cüzdanınızın Sepolia veya Mainnet ağına ayarlı olduğundan emin olun.)*
+
 Bu proje, Amezay tarafından verilen "Frontend Edge Challenge" için geliştirilmiş bir AMEZ token dashboard uygulamasıdır. Uygulama, React, TypeScript, Vite, wagmi ve Tailwind CSS kullanılarak oluşturulmuş ve Cloudflare Pages/Functions üzerinde çalışacak şekilde tasarlanmıştır.
 
+## Uygulama Demosu
 
+Uygulamanın cloudflare üzerinde workers 
 
 ## Özellikler
 
@@ -18,6 +23,7 @@ Bu proje, Amezay tarafından verilen "Frontend Edge Challenge" için geliştiril
 ## Kullanılan Teknolojiler
 
 - **Frontend:** React, TypeScript, Vite, Tailwind CSS
+- **Veri Görselleştirme:** Recharts
 - **Web3:** wagmi, viem, Web3Modal
 - **Edge Computing:** Cloudflare Pages & Functions (Workers)
 - **Test:** Vitest, React Testing Library (Birim Testleri), Playwright (E2E Testleri)
