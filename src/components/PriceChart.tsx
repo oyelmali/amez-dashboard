@@ -16,7 +16,7 @@ export function PriceChart() {
     <div className="p-6 bg-white rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-200 h-80">
       <h3 className="text-lg font-bold text-slate-700 mb-4">Fiyat Geçmişi (7 Gün)</h3>
       <ResponsiveContainer width="100%" height="90%">
-        <AreaChart data={mockPriceData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+        <AreaChart data={mockPriceData} margin={{ top: 5, right: 20, left: 10, bottom: 0 }}>
           <defs>
             <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>

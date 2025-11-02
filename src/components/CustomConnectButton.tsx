@@ -1,14 +1,13 @@
 import { useAppKit } from '@reown/appkit/react';
-import { useAccount, useEnsName } from 'wagmi'; // useEnsAvatar'ı wagmi'den import ediyoruz
+import { useAccount, useEnsName } from 'wagmi'; 
 
 // ENS avatarı olmayan kullanıcılar için yedek, genel bir avatar ikonu
 const genericAvatar = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjY2NjYyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgM3MtMS4zNCAzLTMgMy0zLTEuMzQtMy0zIDEuMzQtMyAzIDN6bTAgMTRjLTIuNjcgMC01LjAxLTEuNDQtNi4zMi0zLjU4LjAzLS42Mi4yMS0xLjE5LjQ3LTEuNzIuMjYtLjU0LjU5LTEuMDMgLjk5LTEuNDUgMS4xMy0xLjE4IDIuNzYtMS44MiA0LjQzLTEuODIgMS42NyAwIDMuMy42MyA0LjQzIDEuODMuNDEuNDMuNzQgLjkyIDEgMS40Ni4yNS41My40NCAxLjA5LjQ3IDEuNzFDMTcuMDEgMTcuNTYgMTQuNjcgMTkgMTIgMTl6Ii8+PC9zdmc+";
 
 export default function CustomConnectButton() {
   const { open } = useAppKit();
-  const { address, isConnected } = useAccount();
+  const { address, isConnected, isConnecting, isReconnecting } = useAccount();
 
-  // YENİ: wagmi'nin kendi kancasını kullanarak ENS avatarını alıyoruz
   const { data: avatarUrl } = useEnsName({ address });
 
   const handleConnect = async () => {
@@ -18,7 +17,20 @@ export default function CustomConnectButton() {
   const handleOpenAccount = async () => {
     await open({ view: 'Account' });
   };
-
+  if (isConnecting || isReconnecting) {
+    return (
+      <button
+        disabled
+        className="bg-slate-200 text-slate-500 font-semibold px-5 py-2 rounded-full flex items-center justify-center transition-all"
+      >
+        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Bağlanıyor...
+      </button>
+    );
+  }
   return (
     <>
       {isConnected && address ? (
