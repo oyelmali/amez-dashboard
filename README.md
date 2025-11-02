@@ -1,6 +1,6 @@
 # AMEZ Token Dashboard - Frontend Edge Challenge
 
-**🚀 Canlı Demo:** [**PROJENİN_CANLI_URLSİ**](https://b9de4c8e.amez-dashboard.pages.dev)
+**🚀 Canlı Demo:** [**PROJENİN_CANLI_URLSİ**](https://amez-dashboard.pages.dev/)
 *(Not: Lütfen MetaMask cüzdanınızın Sepolia veya Mainnet ağına ayarlı olduğundan emin olun.)*
 
 Bu proje, Amezay tarafından verilen "Frontend Edge Challenge" için geliştirilmiş bir AMEZ token dashboard uygulamasıdır. Uygulama, React, TypeScript, Vite, wagmi ve Tailwind CSS kullanılarak oluşturulmuş ve Cloudflare Pages/Functions üzerinde çalışacak şekilde tasarlanmıştır.
@@ -97,3 +97,29 @@ npx playwright test
 # Test raporunu tarayıcıda görüntüle
 npx playwright show-report
 ```
+
+## ☁️ Cloudflare Pages'e Deploy Etme
+
+Bu proje, GitHub reposuna bağlanarak Cloudflare Pages'e kolayca deploy edilebilir.
+
+### 1. Projeyi Cloudflare'e Ekleme
+- Cloudflare dashboard'una gidin: Workers & Pages > Create application > Pages > Connect to Git.
+- GitHub hesabınızı bağlayın ve bu projeye ait repoyu seçin.
+### 2. Yapılandırma Ayarları
+Kurulum ekranında aşağıdaki ayarları girin:
+
+- Production Branch: challenge/ADSOYAD (veya sizin çalıştığınız branch'in adı)
+- Framework Preset: Vite (Bu, aşağıdaki komutları otomatik dolduracaktır)
+- Build Komutu: npm run build
+- Build Çıktı Dizini: dist
+### 3. Ortam Değişkeni (Zorunlu)
+Canlıya alınan uygulamanın cüzdan bağlantısı özelliğinin çalışması için mutlaka bir ortam değişkeni eklenmelidir:
+
+- Settings > Environment variables > Production > Add variable yolunu izleyin.
+- Değişken Adı: VITE_WALLETCONNECT_PROJECT_ID
+- Değeri: Sizin WalletConnect Project ID'niz.
+- Bu değişkeni "Encrypt" (Şifrele) etmeyin.
+### 4. Deploy
+- Save and Deploy butonuna tıklayın.
+- Cloudflare, projeyi build edip functions klasöründeki Worker ile birlikte canlıya alacaktır.
+- Ayrıca, canlı URL'nizi (....pages.dev) WalletConnect Cloud projenizin "Domains" (Alan Adları) listesine eklemeyi unutmayın, aksi takdirde isteklere yanıt vermez.
