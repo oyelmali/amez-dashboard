@@ -24,5 +24,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts', // Kurulum dosyasının yolu
     css: true,
+    include: [
+      'src/**/*.{test,spec}.{js,ts,jsx,tsx}'
+    ],
+    exclude: [
+      'node_modules',
+      'dist',
+      'tests',
+    ],
   },
 })
