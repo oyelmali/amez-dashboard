@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('should display the main dashboard elements', async ({ page }) => {
   // Başlığın göründüğünü kontrol et
-  await expect(page.getByRole('heading', { name: 'AMEZ Token Dashboard' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'AMEZAY DASHBOARD' })).toBeVisible();
   // Token bilgi kartının göründüğünü kontrol et
   await expect(page.getByText('Token Bilgileri')).toBeVisible();
 });
