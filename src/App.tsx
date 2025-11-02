@@ -1,11 +1,24 @@
+import React, { Suspense } from 'react';
+
 import { Header } from './components/Header';
 import { ProposalGenerator } from './components/ProposalGenerator';
 import { TokenInfoCard } from './components/TokenInfoCard';
 import { TransferList } from './components/TransferList';
 import { UserBalance } from './components/UserBalance';
-import { PriceChart } from './components/PriceChart';
+
+
+
+const LazyPriceChart = React.lazy(() => import('./components/PriceChart'));
+
+const ChartSkeleton = () => (
+  <div className="p-6 bg-white rounded-2xl shadow-lg animate-pulse">
+    <div className="h-8 bg-slate-200 rounded w-1/3 mb-4"></div>
+    <div className="h-64 bg-slate-200 rounded"></div>
+  </div>
+);
 
 function App() {
+
   return (
     <div className="min-h-screen font-sans text-slate-800 bg-slate-100">
       <Header />
@@ -17,7 +30,9 @@ function App() {
         </div>
 
         <div className="mb-8">
-          <PriceChart />
+          <Suspense fallback={<ChartSkeleton />}>
+            <LazyPriceChart />
+          </Suspense>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">

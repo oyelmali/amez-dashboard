@@ -11,7 +11,7 @@ const mockPriceData = [
   { name: 'Bugün', price: 3350 },
 ];
 
-export function PriceChart() {
+export default function PriceChart() {
   return (
     <div className="p-6 bg-white rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-200 h-80">
       <h3 className="text-lg font-bold text-slate-700 mb-4">Fiyat Geçmişi (7 Gün)</h3>

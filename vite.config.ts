@@ -2,6 +2,7 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -22,7 +23,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/test/setup.ts', // Kurulum dosyasının yolu
+    setupFiles: './src/test/setup.ts', 
     css: true,
     include: [
       'src/**/*.{test,spec}.{js,ts,jsx,tsx}'

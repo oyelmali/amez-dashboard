@@ -1,4 +1,10 @@
-import CustomConnectButton from "./CustomConnectButton";
+import React, { Suspense } from 'react';
+const LazyCustomConnectButton = React.lazy(() => import('./CustomConnectButton'));
+
+const ButtonSkeleton = () => (
+  <div className="h-12 w-40 bg-slate-200 rounded-lg animate-pulse" />
+);
+
 export function Header() {
   return (
     <header className="p-6 bg-white/80 backdrop-blur-lg sticky top-0 z-10 border-b border-slate-200">
@@ -6,7 +12,9 @@ export function Header() {
         <h1 className="text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-violet-600">
           AMEZAY DASHBOARD
         </h1>        
-        <CustomConnectButton />
+        <Suspense fallback={<ButtonSkeleton />}>
+          <LazyCustomConnectButton />
+        </Suspense>
       </div>
       
     </header>
